@@ -13,9 +13,9 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     license='BSD License',
-    description='A django app to sync users between django and a coturn serve',
+    description='A django app to sync users between django and a coturn server',
     long_description=README,
-    url='https://www.example.com/',
+    url='https://github.com/kingandunion.com/django-coturn',
     author='Aaron Gee-Clough',
     author_email='aaron@kingandunion.com',
     classifiers=[
@@ -29,4 +29,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
+    keywords = "django coturn webrtc",
+    install_requires=['django'],
+    python_requires=">=3"
 )
