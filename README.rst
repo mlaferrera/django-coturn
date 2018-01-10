@@ -26,8 +26,8 @@ Quick start
        'coturn': {
            "ENGINE": "django.db.backends.sqlite3",
            "NAME": "<path to db>"
+           }
        }
-   }
    if you are running a different database for the coturn server, replace those values as needed
 
 5. run `python3 manage.py migrate`
