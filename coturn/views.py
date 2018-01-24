@@ -22,6 +22,6 @@ def create_TURN_API_password(username):
     epoch_stamp = _get_epochtime(stamp)
     temp_username = "{}:{}".format(epoch_stamp, username)
     secret = TurnSecret.objects.using("coturn").all()[0]
-    hash_val = hmac.new(secret.value, temp_username, hashlib.sha1)
-    encoded = base64.b64encode(hash_val.digest())
+    hash_val = hmac.new(secret.value.encode("utf-8"), temp_username.encode("utf-8"), hashlib.sha1)
+    encoded = base64.b64encode(hash_val.digest()).decode("utf-8")
     return temp_username, encoded
