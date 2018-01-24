@@ -21,7 +21,7 @@ def create_TURN_API_password(username):
     stamp += datetime.timedelta(seconds=lifetime)
     epoch_stamp = _get_epochtime(stamp)
     temp_username = "{}:{}".format(epoch_stamp, username)
-    secret = TurnSecret.objects.all()[0]
+    secret = TurnSecret.objects.using("coturn").all()[0]
     hash_val = hmac.new(secret.value, temp_username, hashlib.sha1)
     encoded = base64.b64encode(hash_val.digest())
     return temp_username, encoded
