@@ -32,7 +32,7 @@ Quick start
 
 5. run `python3 manage.py migrate`
 
-6. run `python3 manage.py migrate --database coturn`
+6. run `python3 manage.py migrate coturn --database coturn`
 
 7. set a `COTURN_SHARED_SECRET` in settings.py. This is the shared secret between the coturn server and the django
    server. You will need to keep this in sync with the coturn db.
