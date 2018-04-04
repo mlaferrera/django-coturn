@@ -9,7 +9,7 @@ from .models import TurnSecret
 _epoch = datetime.datetime(1970,1,1, tzinfo=datetime.timezone.utc)
 
 def _get_epochtime(time):
-    epochtime = (time - _epoch).total_seconds()
+    epochtime = int((time - _epoch).total_seconds())
     return epochtime
 
 def create_TURN_API_password(username):
