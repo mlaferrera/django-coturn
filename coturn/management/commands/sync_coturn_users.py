@@ -13,7 +13,7 @@ class Command(BaseCommand):
         # so we set it to something random.
         password = User.objects.make_random_password()
         for user in User.objects.all():
-            hash_val = hmac.new(settings.SECRET_KEY, password, hashlib.sha1)
-            hash_val.update(realm)
-            new_user = TurnusersLt(name=user.get_username(), realm=realm, password=hash_val.digest())
+            hash_val = hmac.new(settings.SECRET_KEY.encode("utf-8"), password.encode("utf-8"), hashlib.sha1)
+            hash_val.update(realm.encode('utf-8'))
+            new_user = TurnusersLt(name=user.get_username(), realm=realm.encode("utf-8"), hmackey=hash_val.hexdigest())
             new_user.save(using="coturn")

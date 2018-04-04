@@ -32,8 +32,8 @@ def sync_new_user_to_coturn(sender, instance, **kwargs):
     # NOTE: since we assume the system will be running coturn in REST API mode, this password will never be used.
     # so we set it to something random.
     password = User.objects.make_random_password()
-    hash_val = hmac.new(settings.SECRET_KEY, password, hashlib.sha1)
+    hash_val = hmac.new(settings.SECRET_KEY.encode("utf-8"), password.encode("utf-8"), hashlib.sha1)
     hash_val.update(realm)
-    new_user = TurnusersLt(name=username, realm=realm, password=hash_val.digest())
+    new_user = TurnusersLt(name=username, realm=realm, password=hash_val.hexdigest())
     new_user.save(using="coturn")
 
