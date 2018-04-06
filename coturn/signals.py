@@ -6,6 +6,10 @@ from .models import TurnusersLt
 
 
 def sync_new_user_to_coturn(sender, instance, **kwargs):
+    ##
+    # NOTE: Do not use this for REST API. You do not need to sync users if you are using the REST API.
+    #
+    #
     if sender == User:
         username = instance.get_username()
     else:

@@ -6,6 +6,12 @@ import hmac
 import hashlib
 
 
+#
+# Do not use this if you are using the REST API.
+#
+#
+#
+
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         realm = settings.COTURN_REALM
